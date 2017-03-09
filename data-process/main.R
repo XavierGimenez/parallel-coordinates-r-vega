@@ -10,6 +10,10 @@ inst <- match(PACKAGES, .packages(all=TRUE))
 need <- which(is.na(inst))
 if (length(need) > 0) install.packages(PACKAGES[need])
 
+library('dplyr')
+library('stringr')
+library('jsonlite')
+
 df <- read.csv2('data/data-source.csv', sep = '\t', encoding = 'UTF-8', stringsAsFactors = FALSE)
 
 # the column 'Rang.2016' contains issues
@@ -64,4 +68,4 @@ write.table(df,
 
 
 # write final dataset as json, at viz folder
-write(jsonlite::toJSON(df, pretty = TRUE), '../data-viz/dataset.json')
+write(jsonlite::toJSON(df, pretty = TRUE), '../dataset.json')
