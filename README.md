@@ -4,13 +4,13 @@ Example of a workflow with datawrangling in R and a final visualization output i
 
 From a multidimensional dataset to a parallel coordinates chart. Data wrangling phase dedicated to fix some inconsistent data and generate a csv and json versions of the curated dataset.
 
-Then vega.js is used by calling the node.js utility vg2svg for rendering the static visualization image. vega
+Then vega.js is used by calling the node.js utility vg2svg for rendering the static visualization image.
 
 
 
 ## Basic Setup and execution
 
-### Installataon of vega.js
+### Installation of vega.js
 
 Vega needs to be installed in the main folder of the project, as follows (From https://github.com/vega/vega):
 
