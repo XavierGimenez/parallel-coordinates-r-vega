@@ -1,0 +1,158 @@
+{
+  "$schema": "https://vega.github.io/schema/vega/v3.0.json",
+  "width": 700,
+  "height": 400,
+  "padding": 5,
+
+  "config": {
+    "axisY": {
+      "titleX": -2,
+      "titleY": 410,
+      "titleAngle": 0,
+      "titleAlign": "right",
+      "titleBaseline": "top"
+    }
+  },
+
+  "data": [
+    {
+      "name": "dataset",
+      "url": "dataset.json"
+    },
+    {
+      "name": "fields",
+      "values": [
+        "Alumni",
+        "Award",
+        "HiCi",
+        "N_S",
+        "PUB",
+        "PCP",
+        "Score_total_2016",
+        "Rang_2016"
+      ]
+    }
+  ],
+
+  "scales": [
+    {
+      "name": "color_scale",
+      "type": "ordinal",
+      "range": ["#cc0000", "#00cc00", "#0000cc"],
+      "domain": {"data": "dataset", "field": "color"}
+    },
+    {
+      "name": "ord", "type": "point",
+      "range": "width", "round": true,
+      "domain": {"data": "fields", "field": "data"}
+    },
+    {
+      "name": "Alumni", "type": "linear",
+      "range": "height", "zero": false, "nice": true,
+      "domain": [0, 100]
+    },
+    {
+      "name": "Award", "type": "linear",
+      "range": "height", "zero": false, "nice": true,
+      "domain": [0, 100]
+    },
+    {
+      "name": "HiCi", "type": "linear",
+      "range": "height", "zero": false, "nice": true,
+      "domain": [0, 100]
+    },
+    {
+      "name": "N_S", "type": "linear",
+      "range": "height", "zero": false, "nice": true,
+      "domain": [0, 100]
+    },
+    {
+      "name": "PUB", "type": "linear",
+      "range": "height", "zero": false, "nice": true,
+      "domain": [0, 100]
+    },
+    {
+      "name": "PCP", "type": "linear",
+      "range": "height", "zero": false, "nice": true,
+      "domain": [0, 100]
+    },
+    {
+      "name": "Score_total_2016", "type": "linear",
+      "range": "height", "zero": false, "nice": true,
+      "domain": [0, 100]
+    },
+    {
+      "name": "Rang_2016", "type": "linear",
+      "range": "height", "zero": false, "nice": true,
+      "domain": [500, 0]
+    }
+  ],
+
+  "axes": [
+    {
+      "orient": "left", "zindex": 1,
+      "scale": "Alumni", "title": "Alumni",
+      "offset": {"scale": "ord", "value": "Alumni", "mult": -1}
+    },
+    {
+      "orient": "left", "zindex": 1,
+      "scale": "Award", "title": "Award",
+      "offset": {"scale": "ord", "value": "Award", "mult": -1}
+    },
+    {
+      "orient": "left", "zindex": 1,
+      "scale": "HiCi", "title": "HiCi",
+      "offset": {"scale": "ord", "value": "HiCi", "mult": -1}
+    },
+    {
+      "orient": "left", "zindex": 1,
+      "scale": "N_S", "title": "N & S",
+      "offset": {"scale": "ord", "value": "N_S", "mult": -1}
+    },
+    {
+      "orient": "left", "zindex": 1,
+      "scale": "PUB", "title": "PUB",
+      "offset": {"scale": "ord", "value": "PUB", "mult": -1}
+    },
+    {
+      "orient": "left", "zindex": 1,
+      "scale": "PCP", "title": "PCP",
+      "offset": {"scale": "ord", "value": "PCP", "mult": -1}
+    },
+    {
+      "orient": "left", "zindex": 1,
+      "scale": "Score_total_2016", "title": "Score total 2016", "format": "d",
+      "offset": {"scale": "ord", "value": "Score_total_2016", "mult": -1}
+    },
+    {
+      "orient": "left", "zindex": 1,
+      "scale": "Rang_2016", "title": "Rang 2016", "format": "d",
+      "offset": {"scale": "ord", "value": "Rang_2016", "mult": -1}
+    }
+  ],
+
+  "marks": [
+    {
+      "type": "group",
+      "from": {"data": "dataset"},
+      "marks": [
+        {
+          "type": "line",
+          "from": {"data": "fields"},
+          "encode": {
+            "enter": {
+              "x": {"scale": "ord", "field": "data"},
+              "y": {
+                "scale": {"datum": "data"},
+                "field": {"parent": {"datum": "data"}}
+              },
+              "stroke":  {"scale": "color_scale", "field" : "color"},
+              "strokeWidth": {"value": 1.01},
+              "strokeOpacity": {"value": 0.3}
+            }
+          }
+        }
+      ]
+    }
+  ]
+}
