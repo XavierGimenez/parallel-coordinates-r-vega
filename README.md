@@ -29,4 +29,4 @@ the right place (e.g., `http://localhost:8000/test/`).
 
 ### Run makefile
 
-Go to the bash and run the makafile to execute the whole process. That's it!
+Go to the bash and run the makefile to execute the whole process. That's it!
